@@ -41,8 +41,11 @@ class TValidator {
     if (phoneNumber == null || phoneNumber.isEmpty) {
       return 'Phone number is required';
     }
-    if (phoneNumber.length != 10) {
-      return 'Phone number must be 10 digits long';
+    final phoneNumberRegex = RegExp(r'^[0-9]{10}$');
+    if (!phoneNumberRegex.hasMatch(phoneNumber)) {
+      return 'Invalid phone number';
     }
+
+    return null;
   }
 }
